@@ -1,0 +1,30 @@
+{
+  "name": "greedy-pure",
+  "version": "0.1.0",
+  "description": "Pure JavaScript priority navigation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiberiualex/Greedy-Pure.git"
+  },
+  "keywords": [
+    "navigation",
+    "priority",
+    "greedy"
+  ],
+  "author": "Tiberiu Alexandru Butnaru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tiberiualex/Greedy-Pure/issues"
+  },
+  "homepage": "https://github.com/tiberiualex/Greedy-Pure#readme",
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.1.0"
+  }
+}
