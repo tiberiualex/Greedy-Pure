@@ -1,0 +1,150 @@
+/*===============
+
+File Name: Greedy - Priority Navigation;
+Version: 1.0;
+Author: Tiberiu Alexander;
+Author URL: http://codecanyon.net/user/tiberiualexander/portfolio ;
+E-mail: tiberiu.alexander@gmail.com ;
+Created: 24/10/2015;
+
+=================*/
+/* Menu settings */
+/* The main container */
+/* line 18, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+.greedy-menu {
+  position: relative;
+  min-width: 240px;
+  background-color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1
+  /* Style resets */
+  /* The links */
+  /* The hidden links list */
+  /* The button which hides/shows links */ }
+  /* line 27, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu * {
+    box-sizing: border-box; }
+  /* line 31, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+    /* The visible links list */ }
+    /* line 37, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu ul:first-of-type {
+      position: relative;
+      display: inline-table
+      /* Displaying the menu items on the same line */ }
+      /* line 42, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+      .greedy-menu ul:first-of-type li {
+        display: table-cell; }
+  /* line 49, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu a {
+    display: block;
+    padding: 18px 25px;
+    color: #ff9800;
+    text-decoration: none;
+    white-space: nowrap; }
+  /* line 57, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu .visibile-links > li:not(:last-child) > a {
+    border-right: 1px solid #ff9800; }
+  /* line 62, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu .hidden-links {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+    -webkit-transform-origin: 0 0;
+        -ms-transform-origin: 0 0;
+            transform-origin: 0 0;
+    transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1); }
+    /* line 70, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .hidden-links.links-invisible {
+      -webkit-transform: scaleY(0);
+          -ms-transform: scaleY(0);
+              transform: scaleY(0); }
+      /* line 73, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+      .greedy-menu .hidden-links.links-invisible li {
+        opacity: 0; }
+        /* line 76, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+        .greedy-menu .hidden-links.links-invisible li a {
+          color: #fff; }
+    /* line 82, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .hidden-links li {
+      display: block;
+      opacity: 1;
+      transition: opacity 0.25s ease 0.15s, color 0.15s; }
+      /* line 87, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+      .greedy-menu .hidden-links li:not(:last-child) > a {
+        border-bottom: 1px solid #ff9800; }
+  /* line 94, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+  .greedy-menu .toggle-links {
+    position: absolute;
+    z-index: 3;
+    visibility: hidden;
+    top: 0;
+    right: 0;
+    border: none;
+    width: 60px;
+    height: 54px;
+    background-color: #fc8b00;
+    font-size: 18px;
+    line-height: 1;
+    color: #ff9800;
+    cursor: pointer
+    /* Firefox specific style reset */
+    /*  The hamburger icon */
+    /* The circle icon */ }
+    /* line 109, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links:hover {
+      background-color: #f18500; }
+      /* line 112, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+      .greedy-menu .toggle-links:hover::before {
+        -webkit-transform: scale(1.05);
+            -ms-transform: scale(1.05);
+                transform: scale(1.05); }
+    /* line 117, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links:focus {
+      outline: none; }
+    /* line 121, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links.visible {
+      visibility: visible; }
+    /* line 126, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links::-moz-focus-inner {
+      padding: 0;
+      border: 0; }
+    /* line 132, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links::after {
+      content: '';
+      position: absolute;
+      top: 17px;
+      left: 12px;
+      display: block;
+      width: 36px;
+      height: 4px;
+      background-color: #fff;
+      box-shadow: 0 8px 0 #fff, 0 16px 0 #fff;
+      transition: -webkit-transform 0.3s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.2s ease 0.1s;
+      transition: transform 0.3s cubic-bezier(0.77, 0, 0.175, 1), box-shadow 0.2s ease 0.1s; }
+    /* line 148, C:/Users/Tiberiu/Desktop/Tibs/Work/JavaScript/Greedy/greedy.scss */
+    .greedy-menu .toggle-links.counter::before {
+      box-sizing: border-box;
+      content: attr(data-count);
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      left: -17px;
+      display: block;
+      color: #fff;
+      font-size: 16px;
+      width: 34px;
+      padding: 6px 1px;
+      background-color: #f18700;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      line-height: 1;
+      text-align: center; }

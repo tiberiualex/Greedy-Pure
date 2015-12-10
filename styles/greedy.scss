@@ -1,0 +1,167 @@
+/*===============
+
+File Name: Greedy - Priority Navigation;
+Version: 1.0;
+Author: Tiberiu Alexander;
+Author URL: http://codecanyon.net/user/tiberiualexander/portfolio ;
+E-mail: tiberiu.alexander@gmail.com ;
+Created: 24/10/2015;
+
+=================*/
+
+/* Menu settings */
+$bg-color: #fff;
+$text-color: #ff9800;
+$text-size: 18px;
+
+/* The main container */
+.greedy-menu {
+  position: relative;
+  min-width: 240px;
+  background-color: #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: $text-size;
+  line-height: 1;
+
+  /* Style resets */
+  * {
+    box-sizing: border-box;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    /* The visible links list */
+    &:first-of-type {
+      position: relative;
+      display: inline-table;
+
+      /* Displaying the menu items on the same line */
+      li {
+        display: table-cell;
+      }
+    }
+  }
+
+  /* The links */
+  a {
+    display: block;
+    padding: 18px 25px;
+    color: $text-color;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .visibile-links > li:not(:last-child) > a {
+    border-right: 1px solid $text-color;
+  }
+
+  /* The hidden links list */
+  .hidden-links {
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    transform: none;
+    transform-origin: 0 0;
+    transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1);
+
+    &.links-invisible {
+      transform: scaleY(0);
+
+      li {
+        opacity: 0;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+
+    li {
+      display: block;
+      opacity: 1;
+      transition: opacity 0.25s ease 0.15s, color 0.15s;
+
+      &:not(:last-child) > a {
+        border-bottom: 1px solid $text-color;
+      }
+    }
+  }
+
+  /* The button which hides/shows links */
+  .toggle-links {
+    position: absolute;
+    z-index: 3;
+    visibility: hidden;
+    top: 0;
+    right: 0;
+    border: none;
+    width: 60px;
+    height: $text-size + 36px;
+    background-color: darken(saturate($text-color, 25%), 6%);
+    font-size: $text-size;
+    line-height: 1;
+    color: $text-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(saturate($text-color, 25%), 8%);
+
+      &::before {
+        transform: scale(1.05);
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &.visible {
+      visibility: visible;
+    }
+
+    /* Firefox specific style reset */
+    &::-moz-focus-inner {
+      padding: 0;
+      border: 0
+    }
+
+    /*  The hamburger icon */
+    &::after {
+      content: '';
+      position: absolute;
+      top: 17px;
+      left: 12px;
+      display: block;
+      width: 36px;
+      height: 4px;
+      background-color: $bg-color;
+      box-shadow: 0 8px 0 $bg-color,
+                  0 16px 0 $bg-color;
+      transition: transform .3s cubic-bezier(0.77, 0, 0.175, 1),
+                  box-shadow .2s ease .1s;
+    }
+
+    /* The circle icon */
+    &.counter::before {
+      box-sizing: border-box;
+      content: attr(data-count);
+      position: absolute;
+      z-index: 2;
+      top: 10px;
+      left: -17px;
+      display: block;
+      color: $bg-color;
+      font-size: 16px;
+      width: 34px;
+      padding: 6px 1px;
+      background-color: darken(saturate($text-color, 20%), 7%);
+      border: 3px solid $bg-color;
+      border-radius: 50%;
+      line-height: 1;
+      text-align: center;
+    }
+  }
+}

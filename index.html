@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Greedy</title>
+  <link rel="stylesheet" type="text/css" href="styles/greedy.css">
+  <style>
+    body {
+      background-color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="greedy-menu">
+    <button class="toggle-links"></button>
+    <ul>
+      <li><a href="#">This</a></li>
+      <li><a href="#">is</a></li>
+      <li><a href="#">the</a></li>
+      <li><a href="#">pure</a></li>
+      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">Version</a></li>
+      <li><a href="#">of</a></li>
+      <li><a href="#">Greedy</a></li>
+      <li><a href="#">Nav</a></li>
+      <li><a href="#">It is</a></li>
+      <li><a href="#">Pretty neat</a></li>
+      <li><a href="#">I think</a></li>
+      <li><a href="#">Yolo</a></li>
+      <li><a href="#">Swag</a></li>
+      <li><a href="#">Blaze it!</a></li>
+    </ul>
+  </nav>
+
+<script src="js/greedy.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(event) {
+    var menu = new Greedy({
+                          element: '.greedy-menu',
+                          counter: true
+                         });
+  });
+</script>
+</body>
+</html>
