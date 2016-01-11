@@ -18,6 +18,12 @@
     this.addBindings();
   };
 
+  Greedy.prototype.bindMethod = function(name) {
+    return this['_' + name + '_'] || Object.defineProperty(
+      this, '_' + name + '_', {value: this[name].bind(this)}
+    )['_' + name + '_'];
+  };
+
   Greedy.prototype.setupMenu = function() {
     this.hiddenLinks = document.createElement('ul');
     this.hiddenLinks.classList.add('hidden-links');
@@ -34,11 +40,8 @@
   };
 
   Greedy.prototype.addBindings = function() {
-    window.addEventListener('resize', this.updateMenu.bind(this));
-    this.toggleButton.addEventListener('click', function() {
-      this.hiddenLinks.classList.toggle('links-invisible');
-      this.toggleButton.classList.toggle('links-displayed');
-    }.bind(this));
+    window.addEventListener('resize', this.bindMethod('updateMenu'));
+    this.toggleButton.addEventListener('click', this.bindMethod('toggleHiddenLinks'));
   };
 
   Greedy.prototype.updateMenu = function() {
@@ -64,5 +67,10 @@
     if (this.counter) {
       this.toggleButton.setAttribute('data-count', this.hiddenLinks.children.length);
     }
+  };
+
+  Greedy.prototype.toggleHiddenLinks = function() {
+    this.hiddenLinks.classList.toggle('links-invisible');
+    this.toggleButton.classList.toggle('links-displayed');
   };
 })();
