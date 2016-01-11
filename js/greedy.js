@@ -33,8 +33,7 @@
 
     if (this.counter) {
       this.toggleButton.classList.add('counter');
-    }
-    else {
+    } else {
       this.toggleButton.classList.add('no-counter');
     }
   };
@@ -47,19 +46,18 @@
   Greedy.prototype.updateMenu = function() {
     if (this.element.offsetWidth < this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth) {
       this.toggleButton.classList.add('visible');
+
       while (this.element.offsetWidth < this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth) {
         this.breakpoints.push(this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth);
         this.hiddenLinks.insertBefore(this.visibleLinks.removeChild(this.visibleLinks.lastChild), this.hiddenLinks.firstChild);
       }
-    }
-    else {
+    } else {
       if (this.breakpoints.length) {
         while (this.element.offsetWidth > this.breakpoints[this.breakpoints.length - 1]) {
           this.visibleLinks.appendChild(this.hiddenLinks.removeChild(this.hiddenLinks.firstChild));
           this.breakpoints.pop();
         }
-      }
-      else {
+      } else {
         this.toggleButton.classList.remove('visible');
       }
     }
