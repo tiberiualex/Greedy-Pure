@@ -35,10 +35,10 @@ I've included some Gulp tasks to make development and contributing easier. You h
 
 ## Todo
 
-* Change the styles to use flexbox
+* ~~Change the styles to use flexbox~~
 * Add comments
 * Add more options
 * Add more themes
 * Throttle resize event handler
-* Attach event handlers in a nicer way
+* ~~Attach event handlers in a nicer way~~
 * Fix the bug that throws an error when no links are visible
