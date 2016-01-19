@@ -2,6 +2,12 @@
 /* The main container */
 .greedy-menu {
   position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   min-width: 240px;
   background-color: #fff;
   font-family: Helvetica, Arial, sans-serif;
@@ -20,20 +26,21 @@
     /* The visible links list */ }
     .greedy-menu ul:first-of-type {
       position: relative;
-      display: inline-table;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
       /* Displaying the menu items on the same line */ }
-      .greedy-menu ul:first-of-type li {
-        display: table-cell; }
   .greedy-menu a {
     display: block;
     padding: 18px 25px;
     color: #ff9800;
     text-decoration: none;
     white-space: nowrap; }
-  .greedy-menu .visibile-links > li:not(:last-child) > a {
+  .greedy-menu .visible-links > li:not(:last-child) > a {
     border-right: 1px solid #ff9800; }
   .greedy-menu .hidden-links {
     position: absolute;
+    top: 54px;
     right: 0;
     background-color: #fff;
     -webkit-transform: none;
@@ -60,8 +67,16 @@
       .greedy-menu .hidden-links li:not(:last-child) > a {
         border-bottom: 1px solid #ff9800; }
   .greedy-menu .toggle-links {
-    position: absolute;
-    z-index: 3;
+    -webkit-align-self: flex-end;
+    -ms-flex-item-align: end;
+    align-self: flex-end;
+    position: relative;
+    -webkit-flex: 0 0 60px;
+    -ms-flex: 0 0 60px;
+    flex: 0 0 60px;
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
     visibility: hidden;
     top: 0;
     right: 0;

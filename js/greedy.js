@@ -14,6 +14,7 @@
 
   Greedy.prototype.init = function() {
     this.setupMenu();
+    this.calculateBreakpoints();
     this.updateMenu();
     this.addBindings();
   };
@@ -29,12 +30,21 @@
     this.hiddenLinks.classList.add('hidden-links');
     this.hiddenLinks.classList.add('links-invisible');
     this.element.appendChild(this.hiddenLinks);
-    this.visibleLinks.classList.add('visibile-links');
+    this.visibleLinks.classList.add('visible-links');
 
     if (this.counter) {
       this.toggleButton.classList.add('counter');
     } else {
       this.toggleButton.classList.add('no-counter');
+    }
+  };
+
+  Greedy.prototype.calculateBreakpoints = function() {
+    var childrenWidth = 0;
+
+    for (var i = 0; i < this.visibleLinks.children.length; i++) {
+      childrenWidth += this.visibleLinks.children[i].offsetWidth;
+      this.breakpoints[i] = childrenWidth;
     }
   };
 
@@ -44,26 +54,29 @@
   };
 
   Greedy.prototype.updateMenu = function() {
-    if (this.element.offsetWidth < this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth) {
+    var availableSpace = this.element.offsetWidth - this.toggleButton.offsetWidth;
+    var itemsVisible = this.visibleLinks.children.length;
+    var requiredSpace = this.breakpoints[itemsVisible - 1];
+
+    if (availableSpace < this.breakpoints[itemsVisible - 1]) {
       this.toggleButton.classList.add('visible');
 
-      while (this.element.offsetWidth < this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth) {
-        this.breakpoints.push(this.visibleLinks.offsetWidth + this.toggleButton.offsetWidth);
-        this.hiddenLinks.insertBefore(this.visibleLinks.removeChild(this.visibleLinks.lastChild), this.hiddenLinks.firstChild);
+      while (availableSpace < this.breakpoints[itemsVisible - 1]) {
+        this.hiddenLinks.insertBefore(this.visibleLinks.children[itemsVisible - 1], this.hiddenLinks.firstChild);
+        itemsVisible--;
       }
-    } else {
-      if (this.breakpoints.length) {
-        while (this.element.offsetWidth > this.breakpoints[this.breakpoints.length - 1]) {
-          this.visibleLinks.appendChild(this.hiddenLinks.removeChild(this.hiddenLinks.firstChild));
-          this.breakpoints.pop();
-        }
-      } else {
-        this.toggleButton.classList.remove('visible');
+    } else if (availableSpace > this.breakpoints[itemsVisible]) {
+      while (availableSpace > this.breakpoints[itemsVisible]) {
+        this.visibleLinks.appendChild(this.hiddenLinks.removeChild(this.hiddenLinks.firstChild));
+        itemsVisible++;
       }
     }
 
     if (this.counter) {
       this.toggleButton.setAttribute('data-count', this.hiddenLinks.children.length);
+      if (!this.hiddenLinks.children.length) {
+        this.toggleButton.classList.remove('visible');
+      }
     }
   };
 

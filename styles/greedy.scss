@@ -6,6 +6,8 @@ $text-size: 18px;
 /* The main container */
 .greedy-menu {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   min-width: 240px;
   background-color: #fff;
   font-family: Helvetica, Arial, sans-serif;
@@ -25,11 +27,11 @@ $text-size: 18px;
     /* The visible links list */
     &:first-of-type {
       position: relative;
-      display: inline-table;
+      display: flex;
 
       /* Displaying the menu items on the same line */
       li {
-        display: table-cell;
+        
       }
     }
   }
@@ -43,13 +45,14 @@ $text-size: 18px;
     white-space: nowrap;
   }
 
-  .visibile-links > li:not(:last-child) > a {
+  .visible-links > li:not(:last-child) > a {
     border-right: 1px solid $text-color;
   }
 
   /* The hidden links list */
   .hidden-links {
     position: absolute;
+    top: 54px;
     right: 0;
     background-color: #fff;
     transform: none;
@@ -81,8 +84,10 @@ $text-size: 18px;
 
   /* The button which hides/shows links */
   .toggle-links {
-    position: absolute;
-    z-index: 3;
+    align-self: flex-end;
+    position: relative;
+    flex: 0 0 60px;
+    order: 2;
     visibility: hidden;
     top: 0;
     right: 0;
