@@ -1,6 +1,6 @@
 /* Menu settings */
 $bg-color: #fff;
-$text-color: #ff9800;
+$text-color: #78b1eb;
 $text-size: 18px;
 
 /* The main container */
@@ -28,11 +28,6 @@ $text-size: 18px;
     &:first-of-type {
       position: relative;
       display: flex;
-
-      /* Displaying the menu items on the same line */
-      li {
-        
-      }
     }
   }
 
