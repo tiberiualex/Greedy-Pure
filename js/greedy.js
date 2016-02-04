@@ -19,12 +19,19 @@
     this.addBindings();
   };
 
+  /*
+    Creates/returns a method bounded with 'this'. Used for creating
+    named event listeners that can easily be removed
+  */
   Greedy.prototype.bindMethod = function(name) {
     return this['_' + name + '_'] || Object.defineProperty(
       this, '_' + name + '_', {value: this[name].bind(this)}
     )['_' + name + '_'];
   };
 
+  /*
+    Creates the necessary markup and adds the necessary classes
+  */
   Greedy.prototype.setupMenu = function() {
     this.hiddenLinks = document.createElement('ul');
     this.hiddenLinks.classList.add('hidden-links');
@@ -39,6 +46,10 @@
     }
   };
 
+  /*
+    For each navigation item, calculate how much space is needed
+    to accomodate it
+  */
   Greedy.prototype.calculateBreakpoints = function() {
     var childrenWidth = 0;
 
@@ -58,6 +69,10 @@
     var itemsVisible = this.visibleLinks.children.length;
     var requiredSpace = this.breakpoints[itemsVisible - 1];
 
+    /*
+      Check if there is not enough space for the visible links or
+      if there is space available for the hidden link
+    */
     if (availableSpace < this.breakpoints[itemsVisible - 1]) {
       this.toggleButton.classList.add('visible');
 
